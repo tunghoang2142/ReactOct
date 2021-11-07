@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+.config
+/ClientApp/public/
+/src/registerServiceWorker.js
+/src/App.test.js
+/src/App.js
+/src/App.js/custom.css
