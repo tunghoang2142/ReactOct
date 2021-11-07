@@ -21,16 +21,16 @@ function CreateCustomer(props) {
                 console.log(error.response.data);
                 alert(error.response.data);
             } else
-            if (error.response) {
-                console.log(error)
-                console.log(error.response)
-                Object.values(error.response.data.errors).forEach(e => {
-                    console.log(e)
-                    alert(e)
-                });
-            } else {
-                console.log('Error', error.message);
-            }
+                if (error.response) {
+                    console.log(error)
+                    console.log(error.response)
+                    Object.values(error.response.data.errors).forEach(e => {
+                        console.log(e)
+                        alert(e)
+                    });
+                } else {
+                    console.log('Error', error.message);
+                }
         });
     }
 

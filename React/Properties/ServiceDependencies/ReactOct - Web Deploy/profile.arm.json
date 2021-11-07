@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "React20211107151131",
+      "defaultValue": "ReactOct",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

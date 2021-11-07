@@ -9,7 +9,8 @@ export default class CustomerHome extends Component {
         super(props);
         this.state = {
             customers: [],
-            open: false
+            open: false,
+            entryCount: 5
         };
     }
 
@@ -26,20 +27,21 @@ export default class CustomerHome extends Component {
                 })
             })
             .catch(error => {
+                console.log(error.response)
                 if (error.response.headers['content-type'] === 'text/plain') {
                     console.log(error.response.data);
                     alert(error.response.data);
                 } else
-                if (error.response) {
-                    console.log(error)
-                    console.log(error.response)
-                    Object.values(error.response.data.errors).forEach(e => {
-                        console.log(e)
-                        alert(e)
-                    });
-                } else {
-                    console.log('Error', error.message);
-                }
+                    if (error.response) {
+                        console.log(error)
+                        console.log(error.response)
+                        Object.values(error.response.data.errors).forEach(e => {
+                            console.log(e)
+                            alert(e)
+                        });
+                    } else {
+                        console.log('Error', error.message);
+                    }
             });
     }
 
@@ -50,15 +52,17 @@ export default class CustomerHome extends Component {
     }
 
     render() {
-        const { customers, open } = this.state;
-        return (
-            <div>
-                <h1>Customer</h1>
-                <Button color="blue" onClick={() => this.openCreateModal(true)}>New Customer</Button>
-                <CreateCustomer open={open} openCreateModal={this.openCreateModal} fetchCustomer={this.fetchCustomer} />
-                <CustomerTable customers={customers} fetchCustomer={this.fetchCustomer}/>
-            </div>
-        )
+        const { customers, open, entryCount } = this.state;
+        if (typeof customers !== 'undefined') {
+            return (
+                <div>
+                    <Button color="blue" onClick={() => this.openCreateModal(true)}>New Customer</Button>
+                    <CreateCustomer open={open} openCreateModal={this.openCreateModal} fetchCustomer={this.fetchCustomer} />
+                    <CustomerTable customers={customers} fetchCustomer={this.fetchCustomer} entryCount={entryCount} />
+                </div>
+            )
+        } else return (<div>Loading....</div>)
+
     }
 }
 

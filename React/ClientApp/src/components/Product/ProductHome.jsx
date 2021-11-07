@@ -53,7 +53,6 @@ export default class ProductHome extends Component {
         const { products, open } = this.state;
         return (
             <div>
-                <h1>Product</h1>
                 <Button color="blue" onClick={() => this.openCreateModal(true)}>New Product</Button>
                 <CreateProduct open={open} openCreateModal={this.openCreateModal} fetchProduct={this.fetchProduct} />
                 <ProductTable products={products} fetchProduct={this.fetchProduct}/>
