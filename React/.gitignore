@@ -233,3 +233,6 @@ _Pvt_Extensions
 
 # User defined
 .config/
+
+/Pages
+/Properties
